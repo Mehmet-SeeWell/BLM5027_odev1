@@ -4,13 +4,13 @@ from map_generator import Taximap
 from taxi import Taxi
 
 def train_taxi():
-    epoch_count = 100000
+    episode_count = 100000
     max_step_count = 150
     rewards = []
 
     Taxi.initialize_environment(6, 6, 5, reset_q_table=True) ### Set the map
     print("Training Started!")
-    for n in range(epoch_count):
+    for n in range(episode_count):
         terminated = False
         Taxi.random_start()
 
@@ -26,7 +26,7 @@ def train_taxi():
         Taxi.epsilon = max(0.01, Taxi.epsilon * 0.99995) ### Epsilon decay
 
         if (n+1) % 1000 == 0: ### Report per 1000
-            print(f"Epoch {n+1} - Average Reward: {np.mean(rewards[-1000:]):.3f}, Epsilon value: {Taxi.epsilon:.3f}")
+            print(f"Episode {n+1} - Average Reward: {np.mean(rewards[-1000:]):.3f}, Epsilon value: {Taxi.epsilon:.3f}")
 
     print("Training Finished!")
 
