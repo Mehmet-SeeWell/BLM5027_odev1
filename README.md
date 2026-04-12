@@ -17,7 +17,7 @@ Yolcu, haritadaki duraklar arasından bir tanesine yerleştirilir ve duraklardan
 Amacımız, taksimizi elimizdeki harita üzerinde önce bulunduğu duraktan yolcuyu alacak ondan sonra da hedef noktasına götürüp bırakacak şekilde eğitebilen bir model tasarlamak ve çalıştırmaktır.
 
 ## Model Yapısı
-Projede Q-Learning yaklaşımı kullanılmıştır. Bu yöntemde her durum-eylem çifti için bir değer tutulur ve ajan zamanla hangi durumda hangi eylemin daha avantajlı olduğunu öğrenir. Bu proje için 6x6 bir grid kullanacağız ve bu grid üzerinde 5 farklı durak belirleyeceğiz.
+Projede Q-Learning yaklaşımı kullanılmıştır. Bu yöntemde her durum-eylem çifti için bir değer tutulur ve ajan zamanla hangi durumda hangi eylemin daha avantajlı olduğunu öğrenir. Yazdığımız kod herhangi boyutta bir grid ve durak sayısına izin verse bu proje için 6x6 bir grid kullanacağız ve bu grid üzerinde 5 farklı durak belirleyeceğiz.
 
 Durum uzayı şu bileşenlerden oluşmaktadır:
 - taksinin x koordinatı  (6 -> 6)
@@ -50,8 +50,7 @@ _ε_: Epsilon [0.95 -> 0.01, Decay rate = 0.005%]
 ```
 
 ## Eğitim Süreci ve Sonuçlar
-Toplamda 100,000 episode'dan (bölümden) oluşan bir eğitim süreci sonucunda modelin ortalama ödül değeri -500 civarından +10 civarına kadar iyileşme göstermiştir ve _ε_ değeri azaldıkça daha tutarlı hareketler göstermiştir.
-
+Toplamda 100,000 episode'dan (bölümden) oluşan bir eğitim süreci sonucunda modelin ortalama ödül değeri -500 civarından +10 civarına kadar iyileşme göstermiştir ve _ε_ değeri azaldıkça daha tutarlı hareketler göstermiştir. Yapılan adımlar daha akıllıca ve daha tutarlı bir hale gelmeye başladıkça da her bir episode'un süresi üstel olarak daha kısa sürmeye başlamıştır.
 
 <img width="365" height="330" alt="Screenshot (4697)" src="https://github.com/user-attachments/assets/eab2bd44-afaf-4960-ac98-4a94aba74b1c" />
 
