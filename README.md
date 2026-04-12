@@ -1,9 +1,58 @@
-## BLM5027 Assignment 1 - Reinforcement Learning with Taxi-v3 on a 6x6 Grid
+# BLM5027 Assignment 1 - Reinforcement Learning with Taxi-v3 on a 6x6 Grid
 Bu projede OpenAI'a ait olan Gym (Gymnasium fork'u üzerinden devam ettiriliyor) kütüphanesindeki Taxi-v3 ortamını 6x6 boyutunda olacak şekilde tekrardan tasarlayarak Q-Learning algoritması ile eğiteceğiz.
 
-# Proje Detayları
-# Kod Yapısı
-# Eğitim Süreci ve Sonuçlar
+## Proje Detayları
+Taxi-v3 ortamı, otonom bir taksinin işleyişini minimalist bir şekilde modellemek için tasarlanmıştır. Bu model üzerinde taksinin davranışlarını eğiterek
+
+Her hangi bir durumda taksimiz 6 farklı eylemden birini gerçekleştirebilir ve bu eylemlere göre ödüllendirilir ya da cezalandırılır:
+- 0: Sola İlerle    (-1 Puan)
+- 1: Sağa İlerle    (-1 Puan)
+- 2: Yukarı İlerle  (-1 Puan)
+- 3: Aşağı İlerle   (-1 Puan)
+- 4: Yolcuyu Bırak  (Yolcuyu hedef noktaya bırakırsa +20 Puan, yanlış durakta bırakırsa -1 Puan, yolcunun bırakamayacağı bir yerde uygulanırsa -10 Puan)
+- 5: Yolcuyu Al     (-1 Puan, yolcunun olmadığı bir yerde uygulanırsa -10 Puan)
+
+Yolcu, haritadaki duraklar arasından bir tanesine yerleştirilir ve duraklardan bir tanesi hedef olarak belirlenir. Yolcunun olabileceği durum, her bir durağın yanı sıra taksinin içerisi de olabileceğinden ötürü (n+1) adettir.
+
+Amacımız, taksimizi elimizdeki harita üzerinde önce bulunduğu duraktan yolcuyu alacak ondan sonra da hedef noktasına götürüp bırakacak şekilde eğitebilen bir model tasarlamak ve çalıştırmaktır.
+
+## Model Yapısı
+Projede Q-Learning yaklaşımı kullanılmıştır. Bu yöntemde her durum-eylem çifti için bir değer tutulur ve ajan zamanla hangi durumda hangi eylemin daha avantajlı olduğunu öğrenir. Bu proje için 6x6 bir grid kullanacağız ve bu grid üzerinde 5 farklı durak belirleyeceğiz.
+
+Durum uzayı şu bileşenlerden oluşmaktadır:
+- taksinin x koordinatı  (6 -> 6)
+- taksinin y koordinatı  (6 -> 36)
+- yolcunun durumu        (5+1 -> 216)
+- hedef konumu           (5 -> 1080)
+
+Her durum için 6 farklı aksiyon bulunduğu için Q-tablosunun boyutu (1080, 6) şeklindedir.
+
+Q-Learning güncellemesi standart formülle yapılmaktadır:
+Q(s, a) = (1 - _α_) * Q(s, a) + _α_ * (_r_ + _γ_ * max(Q(s')))
+
+s : Şu anki durum\
+a : Şu anki eylem\
+s': Bir sonraki durum
+
+_α_: learning rate (öğrenme oranı) [0.1]\
+_γ_: discount factor (indirim faktörü) [0.95]\
+_r_: reward (bu durumdaki alınan ödül)
+
+Eylem seçimi için Epsilon Greedy algoritmasından yararlanacağız. Bu algoritmada verilen bir _ε_ değerine oranla model ya öğrendiği bilgiler arasından en optimal olanı yapar ya da rastgele eylemler gerçekleştirerek yeni bilgi edinmeye çalışır.
+
+_ε_: Epsilon [0.95 -> 0.01, Decay rate = 0.005%]
+
+```
+        if rnd.uniform(0, 1) < Taxi.epsilon:
+            Taxi.action = rnd.randrange(6)
+        else:
+            Taxi.action = np.argmax(Taxi.q_table[old_state])
+```
+
+## Eğitim Süreci ve Sonuçlar
+Toplamda 100,000 episode'dan (bölümden) oluşan bir eğitim süreci sonucunda modelin ortalama ödül değeri -500 civarından +10 civarına kadar iyileşme göstermiştir ve _ε_ değeri azaldıkça daha tutarlı hareketler göstermiştir.
+
+
 <img width="365" height="330" alt="Screenshot (4697)" src="https://github.com/user-attachments/assets/eab2bd44-afaf-4960-ac98-4a94aba74b1c" />
 
 <img width="520" height="277" alt="Screenshot (4696)" src="https://github.com/user-attachments/assets/929ba97a-4a70-40c0-b140-99be32b54bce" />
