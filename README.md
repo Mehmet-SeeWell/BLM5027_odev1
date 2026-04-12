@@ -54,6 +54,8 @@ else:
         Taxi.action = np.argmax(Taxi.q_table[old_state])
 ```
 
+Grafiksel gösterim üzerinde n adet duraklar 0 ile n-1 arasında sayısal değerler ile grid üzerinde gösterilir. Bu durakların yanında eğer yolcu bulunuyor ise _p_, eğer bu durak hedef konum ise _d_ harfi bulunur. Taksi grid üzerinde yolcuyu taşıyorsa _T_ ile, taşımıyorsa da _t_ ile, bunların dışındaki bütün boş noktalar _:_ ile gösterilir.
+
 ## Eğitim Süreci ve Sonuçlar
 Toplamda 10,000 episode'dan (bölümden) oluşan bir eğitim süreci sonucunda modelin ortalama ödül değeri -500 civarından +10 civarına kadar iyileşme göstermiştir ve _ε_ değeri azaldıkça daha tutarlı hareketler göstermiştir. Yapılan adımlar daha akıllıca ve daha tutarlı bir hale gelmeye başladıkça da her bir episode'un süresi üstel olarak daha kısa sürmeye başlamıştır.
 
