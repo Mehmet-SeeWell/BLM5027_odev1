@@ -4,7 +4,7 @@ from map_generator import Taximap
 from taxi import Taxi
 
 def train_taxi():
-    episode_count = 100000
+    episode_count = 10000
     max_step_count = 150
     rewards = []
 
@@ -23,9 +23,9 @@ def train_taxi():
             ... ### Truncated
 
         rewards.append(Taxi.reward)
-        Taxi.epsilon = max(0.01, Taxi.epsilon * 0.99995) ### Epsilon decay
+        Taxi.epsilon = max(0.01, Taxi.epsilon * 0.9995) ### Epsilon decay
 
-        if (n+1) % 1000 == 0: ### Report per 1000
+        if n == 0 or (n+1) % 1000 == 0: ### Report per 1000
             print(f"Episode {n+1} - Average Reward: {np.mean(rewards[-1000:]):.3f}, Epsilon value: {Taxi.epsilon:.3f}")
 
     print("Training Finished!")
