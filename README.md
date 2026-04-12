@@ -57,9 +57,14 @@ else:
 ## Eğitim Süreci ve Sonuçlar
 Toplamda 10,000 episode'dan (bölümden) oluşan bir eğitim süreci sonucunda modelin ortalama ödül değeri -500 civarından +10 civarına kadar iyileşme göstermiştir ve _ε_ değeri azaldıkça daha tutarlı hareketler göstermiştir. Yapılan adımlar daha akıllıca ve daha tutarlı bir hale gelmeye başladıkça da her bir episode'un süresi üstel olarak daha kısa sürmeye başlamıştır.
 
-<img width="365" height="197" alt="Screenshot (4702)" src="https://github.com/user-attachments/assets/7fd43a7f-d158-4101-827e-3bca4b362d9d" />\
-
-<img width="514" height="277" alt="Screenshot (4701)" src="https://github.com/user-attachments/assets/5610cc4e-f1e9-4efd-92c8-0075b200572b" />\
-
-![taxi](https://github.com/user-attachments/assets/10f57f86-4f34-463a-ba37-b4e29bbd9809) ![taxi2](https://github.com/user-attachments/assets/d963bff7-b5c1-41b5-9823-15e26b126423)
+<p align="center">
+<img width="365" height="197" alt="Screenshot (4702)" src="https://github.com/user-attachments/assets/7fd43a7f-d158-4101-827e-3bca4b362d9d" />  
+        
+<p align="center">
+<img width="514" height="277" alt="Screenshot (4701)" src="https://github.com/user-attachments/assets/5610cc4e-f1e9-4efd-92c8-0075b200572b" />
+        
+<p align="center">
+<img width="220" height="220" alt="taxi_gif1" src="https://github.com/user-attachments/assets/10f57f86-4f34-463a-ba37-b4e29bbd9809" />
+        
+<img width="220" height="220" alt="taxi_gif2" src="https://github.com/user-attachments/assets/d963bff7-b5c1-41b5-9823-15e26b126423" />
 
