@@ -17,7 +17,7 @@ Yolcu, haritadaki duraklar arasından bir tanesine yerleştirilir ve duraklardan
 Amacımız, taksimizi elimizdeki harita üzerinde önce bulunduğu duraktan yolcuyu alacak ondan sonra da hedef noktasına götürüp bırakacak şekilde eğitebilen bir model tasarlamak ve çalıştırmaktır.
 
 ## Model Yapısı
-Projede Q-Learning yaklaşımı kullanılmıştır. Bu yöntemde her durum-eylem çifti için bir değer tutulur ve ajan zamanla hangi durumda hangi eylemin daha avantajlı olduğunu öğrenir. Yazdığımız kod herhangi boyutta bir grid ve durak sayısına izin verse bu proje için 6x6 bir grid kullanacağız ve bu grid üzerinde 5 farklı durak belirleyeceğiz.
+Projede Q-Learning yaklaşımı kullanılmıştır. Bu yöntemde her durum-eylem çifti için bir değer tutulur ve ajan zamanla hangi durumda hangi eylemin daha avantajlı olduğunu öğrenir. Yazdığımız kod herhangi boyutta bir grid ve durak sayısına izin verse de bu proje için 6x6 bir grid kullanacağız ve bu grid üzerinde 5 farklı durak belirleyeceğiz.
 
 Durum uzayı şu bileşenlerden oluşmaktadır:
 - taksinin x koordinatı  (6 -> 6)
