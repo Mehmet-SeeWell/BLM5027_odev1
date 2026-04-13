@@ -34,9 +34,9 @@ s : Şu anki durum\
 a : Şu anki eylem\
 s': Bir sonraki durum
 
-_α_: learning rate (öğrenme oranı) [0.1]\
-_γ_: discount factor (indirim faktörü) [0.95]\
-_r_: reward (bu durumdaki alınan ödül)
+_α_ : learning rate (öğrenme oranı) [0.1]\
+_γ_ : discount factor (indirim faktörü) [0.95]\
+_r_ : reward (bu durumdaki alınan ödül)
 
 ```
 def update_q_table(old_state, old_value, next_value, reward):
@@ -45,7 +45,7 @@ def update_q_table(old_state, old_value, next_value, reward):
 
 Eylem seçimi için Epsilon Greedy algoritmasından yararlanacağız. Bu algoritmada verilen bir _ε_ değerine oranla model ya öğrendiği bilgiler arasından en optimal olanı yapar ya da rastgele eylemler gerçekleştirerek yeni bilgi edinmeye çalışır.
 
-_ε_: Epsilon [0.95 -> 0.01, Decay rate = 0.05%]
+_ε_ : Epsilon [0.95 -> 0.01, Decay rate = 0.05%]
 
 ```
 if rnd.uniform(0, 1) < Taxi.epsilon:
