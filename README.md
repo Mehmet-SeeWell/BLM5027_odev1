@@ -2,7 +2,7 @@
 Bu projede OpenAI'a ait olan Gym (Gymnasium fork'u üzerinden devam ettiriliyor) kütüphanesindeki Taxi-v3 ortamını 6x6 boyutunda olacak şekilde tekrardan tasarlayarak Q-Learning algoritması ile eğiteceğiz.
 
 ## Proje Detayları
-Taxi-v3 ortamı, otonom bir taksinin işleyişini minimalist bir şekilde modellemek için tasarlanmıştır. Bu model üzerinde taksinin davranışlarını eğiterek
+Taxi-v3 ortamı, otonom bir taksinin işleyişini minimalist bir şekilde modellemek için tasarlanmıştır. Verilen 5x5 boyutundaki bir grid üzerinde hareket eden taksinin davranışları incelenerek, ödül-ceza mekanizmaları sayesinde başlangıçta rastgele hareket eden bir ajanın zamanla daha bilinçli, amaç odaklı ve rasyonel seçimler yapmayı öğrenmesi gözlemlenebilir.
 
 Her hangi bir durumda taksimiz 6 farklı eylemden birini gerçekleştirebilir ve bu eylemlere göre ödüllendirilir ya da cezalandırılır:
 - 0: Sola İlerle    (-1 Puan)
